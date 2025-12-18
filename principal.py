@@ -6,13 +6,14 @@ from negocio import (
     eliminar_publicacion,
     crear_comentario,
     crear_compania,
+    
 )
 from interfaces_usuario import menu_inicial
 from auxiliares import validar_correo
 from servicios.serper import busqueda
 from datos.obtener_datos import obtener_listado_objetos, eliminar_objeto_por_id
 from modelos.modelos import Comment, Company
-
+from negocio.negocio_comments import borrar_comentario
 # obtener_data_usuarios_api(url_usuarios)
 # listado_usuarios_db()
 # crear_user_api(url_usuarios)
@@ -99,10 +100,10 @@ def app():
                                 id_elim = input('ID comentario a eliminar: ')
                                 try:
                                     id_elim = int(id_elim)
-                                except:
+                                except: 
                                     print('ID inválido.')
                                     continue
-                                eliminar_objeto_por_id(Comment, id_elim)
+                                borrar_comentario(id_elim)
                             elif r == '0':
                                 break
                             else:

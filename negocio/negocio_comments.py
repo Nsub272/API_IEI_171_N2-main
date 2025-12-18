@@ -37,3 +37,12 @@ def crear_comentario(numero, nombre, correo, contenido, id_post):
         return id_comentario
     except Exception as error:
         print(f'Error al guardar al usuario: {error}')
+
+def borrar_comentario(id_comentario):
+    from datos import eliminar_objeto_por_id
+    try:
+        resultado = eliminar_objeto_por_id(Comment, id_comentario)
+        return resultado
+    except Exception as error:
+        print(f'Error al eliminar el comentario: {error}')
+        return False
