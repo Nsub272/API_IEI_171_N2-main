@@ -96,6 +96,9 @@ def app():
                                     print('ID Post inválido.')
                                     continue
                                 crear_comentario(None, nombre, correo, contenido, post_id)
+                                if not validar_correo(correo):
+                                    print('Correo inválido.')
+                                    continue
                             elif r == '3':
                                 id_elim = input('ID comentario a eliminar: ')
                                 try:
