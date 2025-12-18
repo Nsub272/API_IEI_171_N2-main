@@ -1,5 +1,12 @@
 from .negocio_addresses import crear_direccion
-from .negocio_comments import obtener_data_comentarios, crear_comentario
+from .negocio_comments import (
+    crear_comentario,
+    borrar_comentario,
+    actualizar_comentario,
+    listar_comentarios,
+    buscar_comentario_por_id,
+    obtener_data_comentarios
+)
 from .negocio_companies import crear_compania
 from .negocio_geos import listado_geolocalizaciones, crear_geolocalizacion
 from .negocio_posts import obtener_data_publicaciones, listado_publicaciones, crear_publicacion, eliminar_publicacion

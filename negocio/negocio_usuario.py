@@ -35,8 +35,7 @@ def registrar_usuario():
                 nombre=ingreso_nombre,
                 usuario=ingreso_nombre_usuario,
                 email=ingreso_email,
-                contrasena_hash=hashed,
-                contrasena_salt=salt)
+                contrasena_hash=hashed.decode('utf-8'))
 
             try:
                 id_usuario = insertar_objeto(nuevo_usuario)
@@ -64,3 +63,4 @@ def iniciar_sesion():
                 return False
         else:
             print('Usuario NO encontrado, regístrese para ingresar.')
+            return False

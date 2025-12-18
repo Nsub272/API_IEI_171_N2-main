@@ -14,19 +14,19 @@ from servicios.serper import busqueda
 from datos.obtener_datos import obtener_listado_objetos, eliminar_objeto_por_id
 from modelos.modelos import Comment, Company
 from negocio.negocio_comments import borrar_comentario
-# obtener_data_usuarios_api(url_usuarios)
-# listado_usuarios_db()
-# crear_user_api(url_usuarios)
-# eliminar_user_api(url_usuarios)
-# obtener_data_publicaciones(url_publicaciones)
-# listado_publicaciones()
-# registrar_usuario()
+from negocio.negocio_users import (
+    obtener_users_api,
+    listado_usuarios_db,
+    crear_user_api,
+    modificar_user_api,
+    eliminar_user_api
+)
 
 
 def app():
     while True:
         menu_inicial()
-        opcion_inicial = input('Seleccione su opción [0-3]: ')
+        opcion_inicial = input('Seleccione su opción [0-4]: ')
         if opcion_inicial == '1':
             registrar_usuario()
         elif opcion_inicial == '2':
@@ -59,7 +59,7 @@ def app():
                                 except:
                                     print('ID Usuario inválido.')
                                     continue
-                                crear_publicacion(titulo, contenido, user_id)
+                                # crear_publicacion(titulo, contenido, user_id)
                             elif r == '3':
                                 id_elim = input('ID publicación a eliminar: ')
                                 try:
@@ -95,10 +95,12 @@ def app():
                                 except:
                                     print('ID Post inválido.')
                                     continue
+                                if post_id is None:
+                                    print('ID Post inválido.')
+                                    continue
                                 crear_comentario(None, nombre, correo, contenido, post_id)
                                 if not validar_correo(correo):
                                     print('Correo inválido.')
-                                    continue
                             elif r == '3':
                                 id_elim = input('ID comentario a eliminar: ')
                                 try:
@@ -146,8 +148,34 @@ def app():
                         session_active = False
                     else:
                         print('Opción inválida')
+
         elif opcion_inicial == '3':
+            while True:
+                print('\n--- API JsonPlaceholder ---')
+                print('[1] Obtener Usuarios (GET -> DB)')
+                print('[2] Crear Usuario (POST)')
+                print('[3] Modificar Usuario (PUT)')
+                print('[4] Eliminar Usuario (DELETE)')
+                print('[0] Volver')
+                opcion_api = input('Seleccione opción [0-4]: ')
+                
+                if opcion_api == '1':
+                     obtener_users_api()
+                     listado_usuarios_db()
+                elif opcion_api == '2':
+                     crear_user_api()
+                elif opcion_api == '3':
+                     modificar_user_api()
+                elif opcion_api == '4':
+                     eliminar_user_api()
+                elif opcion_api == '0':
+                     break
+                else:
+                    print('Opción inválida')
+
+        elif opcion_inicial == '4':
             busqueda()
+
         elif opcion_inicial == '0':
             print('Saliendo...')
             break

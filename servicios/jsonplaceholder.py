@@ -25,7 +25,7 @@ def get_users_api():
 
 
 def post_user_api(json_user):
-    respuesta = requests.post(url_users, data=json_user)
+    respuesta = requests.post(url_users, json=json_user)
     if respuesta.status_code == 201:
         print("Solicitud correcta, User creado...")
         print(respuesta.text)
@@ -36,7 +36,7 @@ def post_user_api(json_user):
 
 def put_user_api(id_user, json_user):
     url = f'{url_users}/{id_user}'
-    respuesta = requests.put(url, data=json_user)
+    respuesta = requests.put(url, json=json_user)
     if respuesta.status_code == 200:
         print("Solicitud correcta, User modificado...")
         print(respuesta.text)

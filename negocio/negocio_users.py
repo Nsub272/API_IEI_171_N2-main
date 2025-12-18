@@ -59,7 +59,7 @@ def crear_user_api():
     post_user_api(user)
 
 
-def modificar_user_api(url):
+def modificar_user_api():
     id_user = input('Ingrese ID usuario: ')
     try:
         id_user = int(id_user)
@@ -80,7 +80,7 @@ def modificar_user_api(url):
     put_user_api(id_user, user)
 
 
-def eliminar_user_api(url):
+def eliminar_user_api():
     id_user = input('Ingrese ID usuario: ')
     try:
         id_user = int(id_user)
